@@ -37,13 +37,13 @@ public class HairdresserRepository implements HairdresserRepositoryContract {
 
     @Override
     public List<Turn> allTurnsByHairdresser(Long id) {
-        List<Turn> filterByName = new ArrayList<>();
+        List<Turn> filterById = new ArrayList<>();
         for(Turn turn : turns.values()) {
-            if(turn.getHairdresserID() == id) {
-                filterByName.add(turn);
+            if(turn.getId().equals(id)) {
+                filterById.add(turn);
             }
         }
-        return filterByName;
+        return filterById;
     }
 
     @Override

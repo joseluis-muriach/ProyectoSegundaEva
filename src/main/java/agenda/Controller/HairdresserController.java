@@ -1,5 +1,6 @@
 package agenda.Controller;
 
+import agenda.entities.Hairdresser;
 import agenda.services.HairdresserServiceContract;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class HairdresserController {
             @RequestParam String hour,
             @RequestParam String duration,
             @RequestParam boolean booked,
-            @RequestParam int hairdresserID
+            @RequestParam Hairdresser hairdresserID
     ) {
         service.createTurn(id, name, date, hour, duration, booked, hairdresserID);
     }

@@ -1,17 +1,18 @@
 package agenda.services;
 
+import agenda.entities.Hairdresser;
 import agenda.entities.Turn;
 
 import java.util.List;
 
 public interface HairdresserServiceContract {
     void createTurn(Long id,
-                    String name,
-                    String date,
-                    String hour,
-                    String duration,
-                    boolean booked,
-                    int hairdresserID
+                           String name,
+                           String date,
+                           String hour,
+                           String duration,
+                           boolean booked,
+                           Hairdresser hairdresserID
     );
     void deleteTurn(Long id);
     void updateTurn(Turn turn);

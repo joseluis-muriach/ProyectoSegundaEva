@@ -1,15 +1,40 @@
 package agenda.entities;
 
-public class Turn {
-    private Long id;
-    private String name;
-    private String date;
-    private String hour;
-    private String duration;
-    private boolean booked;
-    private int hairdresserID ;
+import javax.persistence.*;
 
-    public Turn(Long id, String name, String date, String hour, String duration, boolean booked, int hairdresserID) {
+import java.io.Serializable;
+
+@Entity
+@Table(name="turns", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "id_hairdresser")
+})
+public class Turn implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Lo mismo que vemos en la primera clase
+    @Column(name="id_turn")
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name="id_hairdresser", referencedColumnName = "id_hairdresser")
+    private Hairdresser hairdresserID ;
+
+    @Column(name="turn_name")
+    private String name;
+
+    @Column(name="date")
+    private String date;
+
+    @Column(name="hour")
+    private String hour;
+
+    @Column(name="session_duration")
+    private String duration;
+
+    @Column(name="booked")
+    private boolean booked;
+
+
+    public Turn(Long id, String name, String date, String hour, String duration, boolean booked, Hairdresser hairdresserID) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -70,11 +95,11 @@ public class Turn {
         this.booked = booked;
     }
 
-    public int getHairdresserID() {
+    public Hairdresser getHairdresserID() {
         return hairdresserID;
     }
 
-    public void setHairdresserID(int hairdresserID) {
+    public void setHairdresserID(Hairdresser hairdresserID) {
         this.hairdresserID = hairdresserID;
     }
 

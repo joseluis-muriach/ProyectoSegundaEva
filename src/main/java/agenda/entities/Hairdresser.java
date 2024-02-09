@@ -1,51 +1,65 @@
 package agenda.entities;
 
-public class Hairdresser {
+import javax.persistence.*;
+import java.io.Serializable;
 
-    private int id;
-    private String name;
-    private String birthdate;
-    private String dni;
+@Entity
+@Table(name ="hairdressers")
 
-    public Hairdresser(int id, String name, String birthdate, String dni) {
-        this.id = id;
-        this.name = name;
-        this.birthdate = birthdate;
-        this.dni = dni;
+public class Hairdresser implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Con esto cuando creemos un nuevo peluquero se autoincrementara el ID :)
+    @Column(name ="id_hairdresser")
+    private Long hairdresserID;
+
+    @Column(name="hairdresser_name")
+    private String hairdresserName;
+
+    @Column(name="hairdresser_birthday")
+    private String hairdresserBirthdate;
+
+    @Column(name="hairdresser_dni")
+    private String hairdresserDni;
+
+    public Hairdresser(Long hairdresserID, String hairdresserName, String hairdresserBirthdate, String hairdresserDni) {
+        this.hairdresserID = hairdresserID;
+        this.hairdresserName = hairdresserName;
+        this.hairdresserBirthdate = hairdresserBirthdate;
+        this.hairdresserDni = hairdresserDni;
     }
 
     public Hairdresser() {
     }
 
-    public int getId() {
-        return id;
+    public Long getHairdresserID() {
+        return hairdresserID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setHairdresserID(Long hairdresserID) {
+        this.hairdresserID = hairdresserID;
     }
 
-    public String getName() {
-        return name;
+    public String getHairdresserName() {
+        return hairdresserName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setHairdresserName(String hairdresserName) {
+        this.hairdresserName = hairdresserName;
     }
 
-    public String getBirthdate() {
-        return birthdate;
+    public String getHairdresserBirthdate() {
+        return hairdresserBirthdate;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setHairdresserBirthdate(String hairdresserBirthdate) {
+        this.hairdresserBirthdate = hairdresserBirthdate;
     }
 
-    public String getDni() {
-        return dni;
+    public String getHairdresserDni() {
+        return hairdresserDni;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setHairdresserDni(String hairdresserDni) {
+        this.hairdresserDni = hairdresserDni;
     }
 }

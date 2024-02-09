@@ -1,5 +1,6 @@
 package agenda.services;
 
+import agenda.entities.Hairdresser;
 import agenda.entities.Turn;
 import agenda.repositories.HairdresserRepositoryContract;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class HairdresserService implements HairdresserServiceContract {
             String hour,
             String duration,
             boolean booked,
-            int hairdresserID) {
+            Hairdresser hairdresserID) {
         Turn turn = new Turn(id, name, date, hour, duration, booked, hairdresserID);
         hairdresserRep.createTurn(turn);
     }
